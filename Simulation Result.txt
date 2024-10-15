@@ -1,0 +1,633 @@
+user@user-iot:~$ cd /home/user/Desktop/tinyos-main/apps/New1/RadioRoute-Templateuser@user-iot:~/Desktop/tinyos-main/apps/New1/RadioRoute-Template$ make micaz sim
+mkdir -p simbuild/micaz
+  placing object files in simbuild/micaz
+  writing XML schema to app.xml
+  compiling RadioRouteAppC to object file sim.o
+ncc -c -shared -fPIC -o simbuild/micaz/sim.o -g -O0 -tossim -fnesc-nido-tosnodes=1000 -fnesc-simulate -fnesc-nido-motenumber=sim_node\(\) -fnesc-gcc=gcc -Wall -Wshadow -Wnesc-all -target=micaz -fnesc-cfile=simbuild/micaz/app.c -board=micasb -DDEFINED_TOS_AM_GROUP=0x22 --param max-inline-insns-single=100000 -DIDENT_APPNAME=\"RadioRouteAppC\" -DIDENT_USERNAME=\"user\" -DIDENT_HOSTNAME=\"user-iot\" -DIDENT_USERHASH=0x2c00343aL -DIDENT_TIMESTAMP=0x647a8e25L -DIDENT_UIDHASH=0x3828f48dL -Wno-nesc-data-race RadioRouteAppC.nc   -fnesc-dump=components -fnesc-dump=variables -fnesc-dump=constants -fnesc-dump=typedefs -fnesc-dump=interfacedefs -fnesc-dump=tags -fnesc-dumpfile=app.xml
+In file included from RadioRouteAppC.nc:9:
+In component `RadioRouteC1':
+RadioRouteC1.nc:64: warning: declaration of `packet' shadows global declaration
+RadioRouteC1.nc:34: warning: location of shadowed declaration
+RadioRouteC1.nc:66: warning: declaration of `packet' shadows global declaration
+RadioRouteC1.nc:34: warning: location of shadowed declaration
+RadioRouteC1.nc:85: warning: declaration of `packet' shadows global declaration
+RadioRouteC1.nc:34: warning: location of shadowed declaration
+RadioRouteC1.nc:129: warning: declaration of `packet' shadows global declaration
+RadioRouteC1.nc:34: warning: location of shadowed declaration
+In component `RadioRouteAppC':
+RadioRouteC1.nc:14: warning: expected component `RadioRouteC1', but got component 'RadioRouteC'
+/opt/tinyos-main-2.1.2/tos/lib/tossim/sim_noise.c: In function ‘sim_noise_gen’:
+/opt/tinyos-main-2.1.2/tos/lib/tossim/sim_noise.c:291:7: warning: variable ‘noiseIndex’ set but not used [-Wunused-but-set-variable]
+   int noiseIndex = 0;
+       ^
+RadioRouteC1.nc: In function ‘RadioRouteC1$Next_Node_Search’:
+RadioRouteC1.nc:195:1: warning: control reaches end of non-void function [-Wreturn-type]
+   }
+ ^
+RadioRouteC1.nc: In function ‘RadioRouteC1$actual_send’:
+RadioRouteC1.nc:144:1: warning: control reaches end of non-void function [-Wreturn-type]
+    //return FALSE;
+ ^
+  compiling Python support and C libraries into pytossim.o, tossim.o, and c-support.o
+g++ -c  -shared -fPIC -o simbuild/micaz/pytossim.o -g -O0 -DIDENT_APPNAME=\"RadioRouteAppC\" -DIDENT_USERNAME=\"user\" -DIDENT_HOSTNAME=\"user-iot\" -DIDENT_USERHASH=0x2c00343aL -DIDENT_TIMESTAMP=0x647a8e25L -DIDENT_UIDHASH=0x3828f48dL /opt/tinyos-main-2.1.2/tos/lib/tossim/tossim_wrap.cxx -I/usr/local/include/python2.7 -I/opt/tinyos-main-2.1.2/tos/lib/tossim -DHAVE_CONFIG_H 
+/opt/tinyos-main-2.1.2/tos/lib/tossim/tossim_wrap.cxx: In function ‘void SWIG_Python_AddErrorMsg(const char*)’:
+/opt/tinyos-main-2.1.2/tos/lib/tossim/tossim_wrap.cxx:880:42: warning: format not a string literal and no format arguments [-Wformat-security]
+     PyErr_Format(PyExc_RuntimeError, mesg);
+                                          ^
+g++ -c  -shared -fPIC -o simbuild/micaz/tossim.o -g -O0 -DIDENT_APPNAME=\"RadioRouteAppC\" -DIDENT_USERNAME=\"user\" -DIDENT_HOSTNAME=\"user-iot\" -DIDENT_USERHASH=0x2c00343aL -DIDENT_TIMESTAMP=0x647a8e25L -DIDENT_UIDHASH=0x3828f48dL /opt/tinyos-main-2.1.2/tos/lib/tossim/tossim.c -I/usr/local/include/python2.7 -I/opt/tinyos-main-2.1.2/tos/lib/tossim
+g++ -c  -shared -fPIC -o simbuild/micaz/c-support.o -g -O0 -DIDENT_APPNAME=\"RadioRouteAppC\" -DIDENT_USERNAME=\"user\" -DIDENT_HOSTNAME=\"user-iot\" -DIDENT_USERHASH=0x2c00343aL -DIDENT_TIMESTAMP=0x647a8e25L -DIDENT_UIDHASH=0x3828f48dL /opt/tinyos-main-2.1.2/tos/lib/tossim/hashtable.c -I/usr/local/include/python2.7 -I/opt/tinyos-main-2.1.2/tos/lib/tossim
+  linking into shared object ./_TOSSIMmodule.so
+g++ -shared -fPIC  simbuild/micaz/pytossim.o simbuild/micaz/sim.o simbuild/micaz/tossim.o simbuild/micaz/c-support.o -lstdc++  -o _TOSSIMmodule.so
+  copying Python script interface TOSSIM.py from lib/tossim to local directory
+ 
+*** Successfully built micaz TOSSIM library. 
+user@user-iot:~/Desktop/tinyos-main/apps/New1/RadioRoute-Template$ python RunSimulationScript.py
+********************************************
+*                                          *
+*             TOSSIM Script                *
+*                                          *
+********************************************
+Initializing mac....
+Initializing radio channels....
+    using topology file: topology.txt
+    using noise file: meyer-heavy.txt
+Initializing simulator....
+Activate debug message on channel init
+Activate debug message on channel boot
+Activate debug message on channel timer
+Activate debug message on channel led_0
+Activate debug message on channel led_1
+Activate debug message on channel led_2
+Activate debug message on channel radio
+Activate debug message on channel radio_send
+Activate debug message on channel radio_rec
+Activate debug message on channel radio_pack
+Creating node 1...
+>>>Will boot at time 0 [sec]
+Creating node 2...
+>>>Will boot at time 0 [sec]
+Creating node 3...
+>>>Will boot at time 0 [sec]
+Creating node 4...
+>>>Will boot at time 0 [sec]
+Creating node 5...
+>>>Will boot at time 0 [sec]
+Creating node 6...
+>>>Will boot at time 0 [sec]
+Creating node 7...
+>>>Will boot at time 0 [sec]
+Creating radio channels...
+>>>Setting radio channel from node  1  to node  2  with gain  -60.0  dBm
+>>>Setting radio channel from node  2  to node  1  with gain  -60.0  dBm
+>>>Setting radio channel from node  1  to node  3  with gain  -60.0  dBm
+>>>Setting radio channel from node  3  to node  1  with gain  -60.0  dBm
+>>>Setting radio channel from node  2  to node  4  with gain  -60.0  dBm
+>>>Setting radio channel from node  4  to node  2  with gain  -60.0  dBm
+>>>Setting radio channel from node  3  to node  4  with gain  -60.0  dBm
+>>>Setting radio channel from node  4  to node  3  with gain  -60.0  dBm
+>>>Setting radio channel from node  3  to node  5  with gain  -60.0  dBm
+>>>Setting radio channel from node  5  to node  3  with gain  -60.0  dBm
+>>>Setting radio channel from node  4  to node  6  with gain  -60.0  dBm
+>>>Setting radio channel from node  6  to node  4  with gain  -60.0  dBm
+>>>Setting radio channel from node  5  to node  6  with gain  -60.0  dBm
+>>>Setting radio channel from node  6  to node  5  with gain  -60.0  dBm
+>>>Setting radio channel from node  6  to node  7  with gain  -60.0  dBm
+>>>Setting radio channel from node  7  to node  6  with gain  -60.0  dBm
+>>>Setting radio channel from node  5  to node  7  with gain  -60.0  dBm
+>>>Setting radio channel from node  7  to node  5  with gain  -60.0  dBm
+Initializing Closest Pattern Matching (CPM)...
+Reading noise model data file: meyer-heavy.txt
+Loading:##Done!
+>>>Creating noise model for node: 1
+>>>Creating noise model for node: 2
+>>>Creating noise model for node: 3
+>>>Creating noise model for node: 4
+>>>Creating noise model for node: 5
+>>>Creating noise model for node: 6
+>>>Creating noise model for node: 7
+Start simulation with TOSSIM! 
+
+
+
+DEBUG (1): Application booted.
+DEBUG (7): Application booted.
+DEBUG (3): Application booted.
+DEBUG (6): Application booted.
+DEBUG (2): Application booted.
+DEBUG (5): Application booted.
+DEBUG (4): Application booted.
+DEBUG (7): Radio on on node 7!
+DEBUG (6): Radio on on node 6!
+DEBUG (1): Radio on on node 1!
+DEBUG (3): Radio on on node 3!
+DEBUG (4): Radio on on node 4!
+DEBUG (2): Radio on on node 2!
+DEBUG (5): Radio on on node 5!
+DEBUG (1): Sending packet at time 0:0:4.942382822 
+DEBUG (3): Led 0 status 0
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 0
+DEBUG (3): Received packet at time 0:0:4.944366453
+DEBUG (2): Led 0 status 0
+DEBUG (2): Led 1 status 1
+DEBUG (2): Led 2 status 0
+DEBUG (2): Received packet at time 0:0:4.944366453
+DEBUG (1): Packet sent... at time 0:0:4.944534299 
+DEBUG (2): Sending packet at time 0:0:5.113281260 
+DEBUG (4): Led 0 status 0
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 0
+DEBUG (4): Received packet at time 0:0:5.115142821
+DEBUG (1): Led 0 status 0
+DEBUG (1): Led 1 status 1
+DEBUG (1): Led 2 status 0
+DEBUG (1): Received packet at time 0:0:5.115142821
+DEBUG (2): Packet sent... at time 0:0:5.115310667 
+DEBUG (3): Sending packet at time 0:0:5.205078135 
+DEBUG (4): Led 0 status 1
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 0
+DEBUG (4): Received packet at time 0:0:5.214034991
+DEBUG (3): Packet sent... at time 0:0:5.214202837 
+DEBUG (4): Sending packet at time 0:0:5.476562510 
+DEBUG (6): Led 0 status 0
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 0
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010
+
+DEBUG (6): Received packet at time 0:0:5.484985312
+DEBUG (3): Led 0 status 1
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 0
+DEBUG (3): Received packet at time 0:0:5.484985312
+DEBUG (2): Led 0 status 1
+DEBUG (2): Led 1 status 1
+DEBUG (2): Led 2 status 0
+DEBUG (2): Received packet at time 0:0:5.484985312
+DEBUG (4): Packet sent... at time 0:0:5.485153158 
+DEBUG (6): Sending packet at time 0:0:6.053710947 
+DEBUG (7): Led 0 status 0
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 0
+DEBUG (7): Received packet at time 0:0:6.064208933
+DEBUG (5): Led 0 status 0
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 0
+DEBUG (5): Received packet at time 0:0:6.064208933
+DEBUG (4): Led 0 status 1
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 1
+DEBUG (4): Received packet at time 0:0:6.064208933
+DEBUG (6): Packet sent... at time 0:0:6.064376778 
+DEBUG (5): Sending packet at time 0:0:6.531250010 
+DEBUG (7): Led 0 status 1
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 0
+DEBUG (7): Received packet at time 0:0:6.536712624
+DEBUG (3): Led 0 status 1
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 1
+DEBUG (3): Received packet at time 0:0:6.536712624
+DEBUG (6): Led 0 status 1
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 0
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010110
+
+DEBUG (6): Received packet at time 0:0:6.536712624
+DEBUG (5): Packet sent... at time 0:0:6.536880470 
+DEBUG (7): Sending packet at time 0:0:6.736328135 
+DEBUG (5): Led 0 status 1
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 0
+DEBUG (5): Received packet at time 0:0:6.745300250
+DEBUG (6): Led 0 status 1
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 1
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010110111
+
+DEBUG (6): Received packet at time 0:0:6.745300250
+DEBUG (7): Packet sent... at time 0:0:6.745468096 
+DEBUG (5): Sending packet at time 0:0:7.212890635 
+DEBUG (7): Led 0 status 1
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 1
+DEBUG (7): Received packet at time 0:0:7.220870935
+DEBUG (6): Led 0 status 0
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 1
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010110111011
+
+DEBUG (6): Received packet at time 0:0:7.220870935
+DEBUG (3): Led 0 status 0
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 1
+DEBUG (3): Received packet at time 0:0:7.220870935
+DEBUG (5): Packet sent... at time 0:0:7.221038780 
+DEBUG (6): Sending packet at time 0:0:7.314453135 
+DEBUG (7): Led 0 status 0
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 1
+DEBUG (7): Received packet at time 0:0:7.322936972
+DEBUG (5): Led 0 status 1
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 1
+DEBUG (5): Received packet at time 0:0:7.322936972
+DEBUG (4): Led 0 status 0
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 1
+DEBUG (4): Received packet at time 0:0:7.322936972
+DEBUG (6): Packet sent... at time 0:0:7.323104817 
+DEBUG (3): Sending packet at time 0:0:7.481445322 
+DEBUG (5): Led 0 status 0
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 1
+DEBUG (5): Received packet at time 0:0:7.484909047
+DEBUG (4): Led 0 status 0
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 0
+DEBUG (4): Received packet at time 0:0:7.484909047
+DEBUG (1): Led 0 status 1
+DEBUG (1): Led 1 status 1
+DEBUG (1): Led 2 status 0
+DEBUG (1): Received packet at time 0:0:7.484909047
+DEBUG (3): Packet sent... at time 0:0:7.485076893 
+DEBUG (1): Sending packet at time 0:0:7.543945322 
+DEBUG (3): Led 0 status 0
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 0
+DEBUG (3): Received packet at time 0:0:7.547470082
+DEBUG (2): Led 0 status 1
+DEBUG (2): Led 1 status 1
+DEBUG (2): Led 2 status 1
+DEBUG (2): Received packet at time 0:0:7.547470082
+DEBUG (1): Packet sent... at time 0:0:7.547637927 
+DEBUG (4): Sending packet at time 0:0:7.684570322 
+DEBUG (6): Led 0 status 0
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 0
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010110111011010
+
+DEBUG (6): Received packet at time 0:0:7.692886314
+DEBUG (3): Led 0 status 1
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 0
+DEBUG (3): Received packet at time 0:0:7.692886314
+DEBUG (2): Led 0 status 0
+DEBUG (2): Led 1 status 1
+DEBUG (2): Led 2 status 1
+DEBUG (2): Received packet at time 0:0:7.692886314
+DEBUG (4): Packet sent... at time 0:0:7.693054159 
+DEBUG (2): Sending packet at time 0:0:7.715820322 
+DEBUG (4): Led 0 status 1
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 0
+DEBUG (4): Received packet at time 0:0:7.718353266
+DEBUG (1): Led 0 status 1
+DEBUG (1): Led 1 status 1
+DEBUG (1): Led 2 status 1
+DEBUG (1): Received packet at time 0:0:7.718353266
+DEBUG (2): Packet sent... at time 0:0:7.718521112 
+DEBUG (7): Sending packet at time 0:0:7.893554697 
+DEBUG (5): Led 0 status 0
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 0
+DEBUG (5): Received packet at time 0:0:7.902114828
+DEBUG (7): Packet sent... at time 0:0:7.902282673 
+DEBUG (5): Sending packet at time 0:0:8.369140635 
+DEBUG (7): Led 0 status 0
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 0
+DEBUG (7): Received packet at time 0:0:8.370986937
+DEBUG (7): packet received by the destination node: 7 with the value of: 5
+DEBUG (5): Packet sent... at time 0:0:8.371154783 
+
+
+
+Simulation finished!
+user@user-iot:~/Desktop/tinyos-main/apps/New1/RadioRoute-Template$ ^C
+user@user-iot:~/Desktop/tinyos-main/apps/New1/RadioRoute-Template$ ^C
+user@user-iot:~/Desktop/tinyos-main/apps/New1/RadioRoute-Template$ make micaz sim
+mkdir -p simbuild/micaz
+  placing object files in simbuild/micaz
+  writing XML schema to app.xml
+  compiling RadioRouteAppC to object file sim.o
+ncc -c -shared -fPIC -o simbuild/micaz/sim.o -g -O0 -tossim -fnesc-nido-tosnodes=1000 -fnesc-simulate -fnesc-nido-motenumber=sim_node\(\) -fnesc-gcc=gcc -Wall -Wshadow -Wnesc-all -target=micaz -fnesc-cfile=simbuild/micaz/app.c -board=micasb -DDEFINED_TOS_AM_GROUP=0x22 --param max-inline-insns-single=100000 -DIDENT_APPNAME=\"RadioRouteAppC\" -DIDENT_USERNAME=\"user\" -DIDENT_HOSTNAME=\"user-iot\" -DIDENT_USERHASH=0x2c00343aL -DIDENT_TIMESTAMP=0x647a9c17L -DIDENT_UIDHASH=0x338d6d27L -Wno-nesc-data-race RadioRouteAppC.nc   -fnesc-dump=components -fnesc-dump=variables -fnesc-dump=constants -fnesc-dump=typedefs -fnesc-dump=interfacedefs -fnesc-dump=tags -fnesc-dumpfile=app.xml
+In file included from RadioRouteAppC.nc:9:
+In component `RadioRouteC1':
+RadioRouteC1.nc:64: warning: declaration of `packet' shadows global declaration
+RadioRouteC1.nc:34: warning: location of shadowed declaration
+RadioRouteC1.nc:66: warning: declaration of `packet' shadows global declaration
+RadioRouteC1.nc:34: warning: location of shadowed declaration
+RadioRouteC1.nc:85: warning: declaration of `packet' shadows global declaration
+RadioRouteC1.nc:34: warning: location of shadowed declaration
+RadioRouteC1.nc:129: warning: declaration of `packet' shadows global declaration
+RadioRouteC1.nc:34: warning: location of shadowed declaration
+In component `RadioRouteAppC':
+RadioRouteC1.nc:14: warning: expected component `RadioRouteC1', but got component 'RadioRouteC'
+/opt/tinyos-main-2.1.2/tos/lib/tossim/sim_noise.c: In function ‘sim_noise_gen’:
+/opt/tinyos-main-2.1.2/tos/lib/tossim/sim_noise.c:291:7: warning: variable ‘noiseIndex’ set but not used [-Wunused-but-set-variable]
+   int noiseIndex = 0;
+       ^
+RadioRouteC1.nc: In function ‘RadioRouteC1$Next_Node_Search’:
+RadioRouteC1.nc:195:1: warning: control reaches end of non-void function [-Wreturn-type]
+   }
+ ^
+RadioRouteC1.nc: In function ‘RadioRouteC1$actual_send’:
+RadioRouteC1.nc:144:1: warning: control reaches end of non-void function [-Wreturn-type]
+    //return FALSE;
+ ^
+  compiling Python support and C libraries into pytossim.o, tossim.o, and c-support.o
+g++ -c  -shared -fPIC -o simbuild/micaz/pytossim.o -g -O0 -DIDENT_APPNAME=\"RadioRouteAppC\" -DIDENT_USERNAME=\"user\" -DIDENT_HOSTNAME=\"user-iot\" -DIDENT_USERHASH=0x2c00343aL -DIDENT_TIMESTAMP=0x647a9c17L -DIDENT_UIDHASH=0x338d6d27L /opt/tinyos-main-2.1.2/tos/lib/tossim/tossim_wrap.cxx -I/usr/local/include/python2.7 -I/opt/tinyos-main-2.1.2/tos/lib/tossim -DHAVE_CONFIG_H 
+/opt/tinyos-main-2.1.2/tos/lib/tossim/tossim_wrap.cxx: In function ‘void SWIG_Python_AddErrorMsg(const char*)’:
+/opt/tinyos-main-2.1.2/tos/lib/tossim/tossim_wrap.cxx:880:42: warning: format not a string literal and no format arguments [-Wformat-security]
+     PyErr_Format(PyExc_RuntimeError, mesg);
+                                          ^
+g++ -c  -shared -fPIC -o simbuild/micaz/tossim.o -g -O0 -DIDENT_APPNAME=\"RadioRouteAppC\" -DIDENT_USERNAME=\"user\" -DIDENT_HOSTNAME=\"user-iot\" -DIDENT_USERHASH=0x2c00343aL -DIDENT_TIMESTAMP=0x647a9c17L -DIDENT_UIDHASH=0x338d6d27L /opt/tinyos-main-2.1.2/tos/lib/tossim/tossim.c -I/usr/local/include/python2.7 -I/opt/tinyos-main-2.1.2/tos/lib/tossim
+g++ -c  -shared -fPIC -o simbuild/micaz/c-support.o -g -O0 -DIDENT_APPNAME=\"RadioRouteAppC\" -DIDENT_USERNAME=\"user\" -DIDENT_HOSTNAME=\"user-iot\" -DIDENT_USERHASH=0x2c00343aL -DIDENT_TIMESTAMP=0x647a9c17L -DIDENT_UIDHASH=0x338d6d27L /opt/tinyos-main-2.1.2/tos/lib/tossim/hashtable.c -I/usr/local/include/python2.7 -I/opt/tinyos-main-2.1.2/tos/lib/tossim
+  linking into shared object ./_TOSSIMmodule.so
+g++ -shared -fPIC  simbuild/micaz/pytossim.o simbuild/micaz/sim.o simbuild/micaz/tossim.o simbuild/micaz/c-support.o -lstdc++  -o _TOSSIMmodule.so
+  copying Python script interface TOSSIM.py from lib/tossim to local directory
+ 
+*** Successfully built micaz TOSSIM library. 
+user@user-iot:~/Desktop/tinyos-main/apps/New1/RadioRoute-Template$ python RunSimulationScript.py
+********************************************
+*                                          *
+*             TOSSIM Script                *
+*                                          *
+********************************************
+Initializing mac....
+Initializing radio channels....
+    using topology file: topology.txt
+    using noise file: meyer-heavy.txt
+Initializing simulator....
+Activate debug message on channel init
+Activate debug message on channel boot
+Activate debug message on channel timer
+Activate debug message on channel led_0
+Activate debug message on channel led_1
+Activate debug message on channel led_2
+Activate debug message on channel radio
+Activate debug message on channel radio_send
+Activate debug message on channel radio_rec
+Activate debug message on channel radio_pack
+Creating node 1...
+>>>Will boot at time 0 [sec]
+Creating node 2...
+>>>Will boot at time 0 [sec]
+Creating node 3...
+>>>Will boot at time 0 [sec]
+Creating node 4...
+>>>Will boot at time 0 [sec]
+Creating node 5...
+>>>Will boot at time 0 [sec]
+Creating node 6...
+>>>Will boot at time 0 [sec]
+Creating node 7...
+>>>Will boot at time 0 [sec]
+Creating radio channels...
+>>>Setting radio channel from node  1  to node  2  with gain  -60.0  dBm
+>>>Setting radio channel from node  2  to node  1  with gain  -60.0  dBm
+>>>Setting radio channel from node  1  to node  3  with gain  -60.0  dBm
+>>>Setting radio channel from node  3  to node  1  with gain  -60.0  dBm
+>>>Setting radio channel from node  2  to node  4  with gain  -60.0  dBm
+>>>Setting radio channel from node  4  to node  2  with gain  -60.0  dBm
+>>>Setting radio channel from node  3  to node  4  with gain  -60.0  dBm
+>>>Setting radio channel from node  4  to node  3  with gain  -60.0  dBm
+>>>Setting radio channel from node  3  to node  5  with gain  -60.0  dBm
+>>>Setting radio channel from node  5  to node  3  with gain  -60.0  dBm
+>>>Setting radio channel from node  4  to node  6  with gain  -60.0  dBm
+>>>Setting radio channel from node  6  to node  4  with gain  -60.0  dBm
+>>>Setting radio channel from node  5  to node  6  with gain  -60.0  dBm
+>>>Setting radio channel from node  6  to node  5  with gain  -60.0  dBm
+>>>Setting radio channel from node  6  to node  7  with gain  -60.0  dBm
+>>>Setting radio channel from node  7  to node  6  with gain  -60.0  dBm
+>>>Setting radio channel from node  5  to node  7  with gain  -60.0  dBm
+>>>Setting radio channel from node  7  to node  5  with gain  -60.0  dBm
+Initializing Closest Pattern Matching (CPM)...
+Reading noise model data file: meyer-heavy.txt
+Loading:##Done!
+>>>Creating noise model for node: 1
+>>>Creating noise model for node: 2
+>>>Creating noise model for node: 3
+>>>Creating noise model for node: 4
+>>>Creating noise model for node: 5
+>>>Creating noise model for node: 6
+>>>Creating noise model for node: 7
+Start simulation with TOSSIM! 
+
+
+
+DEBUG (1): Application booted.
+DEBUG (7): Application booted.
+DEBUG (3): Application booted.
+DEBUG (6): Application booted.
+DEBUG (2): Application booted.
+DEBUG (5): Application booted.
+DEBUG (4): Application booted.
+DEBUG (7): Radio on on node 7!
+DEBUG (6): Radio on on node 6!
+DEBUG (1): Radio on on node 1!
+DEBUG (3): Radio on on node 3!
+DEBUG (4): Radio on on node 4!
+DEBUG (2): Radio on on node 2!
+DEBUG (5): Radio on on node 5!
+DEBUG (1): Sending packet at time 0:0:4.942382822 
+DEBUG (3): Led 0 status 0
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 0
+DEBUG (3): Received packet at time 0:0:4.951339679
+DEBUG (2): Led 0 status 0
+DEBUG (2): Led 1 status 1
+DEBUG (2): Led 2 status 0
+DEBUG (2): Received packet at time 0:0:4.951339679
+DEBUG (1): Packet sent... at time 0:0:4.951507525 
+DEBUG (2): Sending packet at time 0:0:5.120117197 
+DEBUG (4): Led 0 status 0
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 0
+DEBUG (4): Received packet at time 0:0:5.127395597
+DEBUG (1): Led 0 status 0
+DEBUG (1): Led 1 status 1
+DEBUG (1): Led 2 status 0
+DEBUG (1): Received packet at time 0:0:5.127395597
+DEBUG (2): Packet sent... at time 0:0:5.127563443 
+DEBUG (3): Sending packet at time 0:0:5.211914072 
+DEBUG (5): Led 0 status 0
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 0
+DEBUG (5): Received packet at time 0:0:5.215591419
+DEBUG (4): Led 0 status 1
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 0
+DEBUG (4): Received packet at time 0:0:5.215591419
+DEBUG (1): Led 0 status 1
+DEBUG (1): Led 1 status 1
+DEBUG (1): Led 2 status 0
+DEBUG (1): Received packet at time 0:0:5.215591419
+DEBUG (3): Packet sent... at time 0:0:5.215759264 
+DEBUG (4): Sending packet at time 0:0:5.489257822 
+DEBUG (6): Led 0 status 0
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 0
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010
+
+DEBUG (6): Received packet at time 0:0:5.495666476
+DEBUG (3): Led 0 status 1
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 0
+DEBUG (3): Received packet at time 0:0:5.495666476
+DEBUG (2): Led 0 status 1
+DEBUG (2): Led 1 status 1
+DEBUG (2): Led 2 status 0
+DEBUG (2): Received packet at time 0:0:5.495666476
+DEBUG (4): Packet sent... at time 0:0:5.495834322 
+DEBUG (5): Sending packet at time 0:0:5.682617197 
+DEBUG (7): Led 0 status 0
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 0
+DEBUG (7): Received packet at time 0:0:5.687820414
+DEBUG (6): Led 0 status 1
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 0
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010110
+
+DEBUG (6): Received packet at time 0:0:5.687820414
+DEBUG (3): Led 0 status 1
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 1
+DEBUG (3): Received packet at time 0:0:5.687820414
+DEBUG (5): Packet sent... at time 0:0:5.687988259 
+DEBUG (6): Sending packet at time 0:0:6.064453135 
+DEBUG (7): Led 0 status 1
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 0
+DEBUG (7): Received packet at time 0:0:6.074462842
+DEBUG (5): Led 0 status 1
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 0
+DEBUG (5): Received packet at time 0:0:6.074462842
+DEBUG (4): Led 0 status 1
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 1
+DEBUG (4): Received packet at time 0:0:6.074462842
+DEBUG (6): Packet sent... at time 0:0:6.074630687 
+DEBUG (7): Sending packet at time 0:0:6.360351572 
+DEBUG (5): Led 0 status 1
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 1
+DEBUG (5): Received packet at time 0:0:6.370529125
+DEBUG (6): Led 0 status 1
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 1
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010110111
+
+DEBUG (6): Received packet at time 0:0:6.370529125
+DEBUG (7): Packet sent... at time 0:0:6.370696971 
+DEBUG (5): Sending packet at time 0:0:6.837890635 
+DEBUG (7): Led 0 status 1
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 1
+DEBUG (7): Received packet at time 0:0:6.843322732
+DEBUG (6): Led 0 status 0
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 1
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010110111011
+
+DEBUG (6): Received packet at time 0:0:6.843322732
+DEBUG (3): Led 0 status 0
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 1
+DEBUG (3): Received packet at time 0:0:6.843322732
+DEBUG (5): Packet sent... at time 0:0:6.843490577 
+DEBUG (6): Sending packet at time 0:0:6.939453135 
+DEBUG (7): Led 0 status 0
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 1
+DEBUG (7): Received packet at time 0:0:6.941253661
+DEBUG (5): Led 0 status 0
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 1
+DEBUG (5): Received packet at time 0:0:6.941253661
+DEBUG (4): Led 0 status 0
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 1
+DEBUG (4): Received packet at time 0:0:6.941253661
+DEBUG (6): Packet sent... at time 0:0:6.941421507 
+DEBUG (3): Sending packet at time 0:0:7.103515635 
+DEBUG (5): Led 0 status 0
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 0
+DEBUG (5): Received packet at time 0:0:7.112350422
+DEBUG (4): Led 0 status 0
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 0
+DEBUG (4): Received packet at time 0:0:7.112350422
+DEBUG (1): Led 0 status 1
+DEBUG (1): Led 1 status 1
+DEBUG (1): Led 2 status 1
+DEBUG (1): Received packet at time 0:0:7.112350422
+DEBUG (3): Packet sent... at time 0:0:7.112518268 
+DEBUG (1): Sending packet at time 0:0:7.171875010 
+DEBUG (3): Led 0 status 0
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 0
+DEBUG (3): Received packet at time 0:0:7.181884717
+DEBUG (2): Led 0 status 1
+DEBUG (2): Led 1 status 1
+DEBUG (2): Led 2 status 1
+DEBUG (2): Received packet at time 0:0:7.181884717
+DEBUG (1): Packet sent... at time 0:0:7.182052562 
+DEBUG (4): Sending packet at time 0:0:7.302734385 
+DEBUG (6): Led 0 status 0
+DEBUG (6): Led 1 status 1
+DEBUG (6): Led 2 status 0
+DEBUG (6):  we are inside the node 6::::::::::::::::: the leds status is like this
+010110111011010
+
+DEBUG (6): Received packet at time 0:0:7.307449323
+DEBUG (2): Led 0 status 0
+DEBUG (2): Led 1 status 1
+DEBUG (2): Led 2 status 1
+DEBUG (2): Received packet at time 0:0:7.307449323
+DEBUG (3): Led 0 status 1
+DEBUG (3): Led 1 status 1
+DEBUG (3): Led 2 status 0
+DEBUG (3): Received packet at time 0:0:7.307449323
+DEBUG (4): Packet sent... at time 0:0:7.307617169 
+DEBUG (2): Sending packet at time 0:0:7.350585947 
+DEBUG (4): Led 0 status 1
+DEBUG (4): Led 1 status 1
+DEBUG (4): Led 2 status 0
+DEBUG (4): Received packet at time 0:0:7.353683463
+DEBUG (1): Led 0 status 0
+DEBUG (1): Led 1 status 1
+DEBUG (1): Led 2 status 1
+DEBUG (1): Received packet at time 0:0:7.353683463
+DEBUG (2): Packet sent... at time 0:0:7.353851309 
+DEBUG (7): Sending packet at time 0:0:7.515625010 
+DEBUG (5): Led 0 status 1
+DEBUG (5): Led 1 status 1
+DEBUG (5): Led 2 status 0
+DEBUG (5): Received packet at time 0:0:7.522048922
+DEBUG (7): Packet sent... at time 0:0:7.522216768 
+DEBUG (5): Sending packet at time 0:0:7.989257822 
+DEBUG (7): Led 0 status 0
+DEBUG (7): Led 1 status 1
+DEBUG (7): Led 2 status 0
+DEBUG (7): Received packet at time 0:0:7.995300267
+DEBUG (7): packet received by the destination node: 7 with the value of: 5
+DEBUG (5): Packet sent... at time 0:0:7.995468113 
+
+
+
+Simulation finished!
+user@user-iot:~/Desktop/tinyos-main/apps/New1/RadioRoute-Template$ 
